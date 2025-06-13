@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+<html lang="ru"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Создание нового админа</title> 
+    <link rel="stylesheet" type="text/css" href="../styles/registration.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/general.css" />
+
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"> 
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script> 
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> 
+
+</head> 
+<body> 
+    <header> 
+        <div class="log">
+            <img src="../sorces/logo.jpg" id="logoimg">
+            <a href="../pages/main.html"class="return">Главная</a>     
+        </div>
+        <span type="submit" id="in" >Вход</span> 
+        <div id="userMenu" style="display: none">
+            <button id="profileButton">Профиль</button>
+            <button id="logoutButton">Выход</button>
+        </div>
+    </header> 
+ 
+    <main> 
+        <div class="registration-form"> 
+            <h2>Регистрация</h2> 
+            <label for="fio">ФИО</label> 
+            <input type="text" id="fio" placeholder="Иванов Иван Иванович"> 
+            <label for="birthdate">Дата рождения</label> 
+            <input type="text" id="birthdate" placeholder="дд.мм.гггг"> 
+            <label for="gender">Пол</label> 
+            <select id="gender"> 
+                <option value="male">Мужчина</option> 
+                <option value="female">Женщина</option> 
+            </select> 
+            <label for="phone">Телефон</label> 
+            <input type="tel" id="phone" placeholder="+7 (xxx) xxx-xx-xx"> 
+            <label for="email">Email</label> 
+            <input type="email" id="email" placeholder="name@example.com"> 
+            <label for="password">Password</label> 
+            <input type="password" id="password"> 
+            <button type="submit" onclick=register()>Зарегистрироваться</button> 
+        </div> 
+    </main> 
+    <footer>
+    <div class="foot-text">© 2025 - ATGC</div>
+    </footer> 
+    <script type="text/javascript" src="../scripts/registration.js"></script>
+</body> 
+</html>
