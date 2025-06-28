@@ -18,6 +18,16 @@ function activate(email){
     });
 
     logoutButton.addEventListener('click', () => {
+      fetch('http://localhost:8080/auth/logout', {  
+        method: 'DELETE',  
+        headers: {  
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        },  
+      })  
+      .catch(error => {  
+        console.error('Ошибка выхода из профиля:', error);  
+        alert('Ошибка выхода из профиля: ' + error.message);  
+      });  
       localStorage.removeItem('token');
       window.location.href = '../pages/login.html'
     });

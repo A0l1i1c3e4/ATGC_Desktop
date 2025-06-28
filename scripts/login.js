@@ -1,4 +1,4 @@
-let flag= "test"
+let flag= ""
 
 window.addEventListener('load', () => {
   const authToken = localStorage.getItem('token');
@@ -24,12 +24,12 @@ function a(){
     window.location.href = '../pages/main.html';
   }
   else{
-    fetch('https://ATGC/admin/login', { 
+    fetch('http://localhost:8080/auth/login', { 
       method: 'POST', 
       headers: { 
         'Content-Type': 'application/json' 
       }, 
-      body: JSON.stringify({ email: email, password: password }) 
+      body: JSON.stringify({ username: email, password: password }) 
     }) 
     .then(response => { 
       if (!response.ok) { 

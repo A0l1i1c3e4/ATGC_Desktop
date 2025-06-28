@@ -1,13 +1,15 @@
+const username = document.getElementById('username');
+const birthdate = document.getElementById('birthdate');
+const useremail = document.getElementById('email');
+const firstName = document.getElementById('firstName');
+const lastName = document.getElementById('lastName');
+const phone = document.getElementById('phone');
+
+const savebutton = document.getElementById('save');
 const loginButton = document.getElementById('in');
 const profileButton = document.getElementById('profileButton');
 const logoutButton = document.getElementById('logoutButton');
 const userMenu = document.getElementById('userMenu');
-const useremail = document.getElementById('email');
-const fio = document.getElementById('fio');
-const phone = document.getElementById('phone');
-const gender = document.getElementById('gender');
-const birthdate = document.getElementById('birthdate');
-const savebutton = document.getElementById('save');
 let userMenuListenerAttached = false;
 
 function activate(email){
@@ -24,6 +26,16 @@ function activate(email){
     });
 
     logoutButton.addEventListener('click', () => {
+      fetch('http://localhost:8080/auth/logout', {  
+        method: 'DELETE',  
+        headers: {  
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        },  
+      })  
+      .catch(error => {  
+        console.error('Ошибка выхода из профиля:', error);  
+        alert('Ошибка выхода из профиля: ' + error.message);  
+      });  
       localStorage.removeItem('token');
       window.location.href = '../pages/login.html'
     });
@@ -37,7 +49,7 @@ function formatDate(dateString) {
   const month = String(date.getMonth() + 1).padStart(2, '0');
   const day = String(date.getDate()).padStart(2, '0'); 
  
-  return `${day}.${month}.${year}`; 
+  return `${year}-${month}-${day}`; 
 } 
  
 window.addEventListener('load', () => { 
@@ -46,7 +58,7 @@ window.addEventListener('load', () => {
     email=localStorage.getItem('email') 
     document.getElementById('in').textContent=email; 
     activate(email); 
-    fetch('https://blog.kreosoft.space/api/account/profile', {  
+    fetch('http://localhost:8080/auth/profile', {  
       method: 'GET',  
       headers: {  
         Authorization: `Bearer ${localStorage.getItem('token')}`, 
@@ -60,36 +72,26 @@ window.addEventListener('load', () => {
       }  
       return response.json(); 
     }) 
-    .then(data => {  
-      useremail.value=data.email; 
-      fio.value=data.fullName; 
-      phone.value=data.phoneNumber; 
-      if(data.gender=="Male"){ 
-        const matchingOption = Array.from(gender.options).find(option => option.textContent === "Мужчина"); 
-        matchingOption.selected = true; 
-      } 
-      else { 
-        const matchingOption2 = Array.from(gender.options).find(option => option.textContent === "Женщина"); 
-        matchingOption2.selected = true;
-      } 
-      birthdate.value=formatDate(data.birthDate); 
+    .then(data => { 
+      username.value = data.username || '';
+      birthdate.value = formatDate(data.birthday) || '';
+      useremail.value = data.email || '';
+      firstName.value = data.firstName || '';
+      lastName.value = data.lastName || '';
+      phone.value = data.phone || '';
+      console.log(data.phone);
       savebutton.addEventListener('click',()=>{ 
-        let resGen=""; 
-        if(gender.selectedOptions[0].textContent=="Мужчина"){ 
-          resGen="Male"; 
-        } 
-        else{resGen="Female"} 
-        fetch('https://blog.kreosoft.space/api/account/profile', {  
+        fetch('http://localhost:8080/auth/profile', {  
           method: 'PUT',  
           headers: {  
             Authorization: `Bearer ${localStorage.getItem('token')}`, 
             'Content-Type': 'application/json' 
           },  
-          body: JSON.stringify({ email: useremail.value, fullName: fio.value, gender: resGen, phoneNumber: phone.value})  
+          body: JSON.stringify({ birthday: birthdate.value, email: useremail.value, firstName: firstName.value, lastName: lastName.value, phone: phone.value})  
         })  
         .then(response => {  
+          
           if (!response.ok) {  
-              
             return response.text().then(text => { throw new Error(text) });  
           } 
         })  
@@ -102,13 +104,13 @@ window.addEventListener('load', () => {
   } else { 
     console.log('Токен не найден в localStorage.'); 
     loginButton.addEventListener('click', () => { 
-      window.location.href = 'file:///E:/TSU/Front/lab2/log/login.html'; 
+      window.location.href = '../pages/login.html'; 
     }); 
   } 
 }); 
 $(function() {  
     $( "#birthdate" ).datepicker({  
-      dateFormat: "dd.mm.yy", 
+      dateFormat: "yy-mm-dd", 
       changeMonth: true,  
     changeYear: true,  
       yearRange: "1900:2024", 

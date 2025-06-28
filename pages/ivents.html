@@ -12,6 +12,7 @@
     <div class="log">
       <img src="../sorces/logo.png" id="logoimg">
       <a href="../pages/main.html" class="return">Главная</a>
+      <a href="../pages/ivent.html" class="return">Создать событие</a>
     </div>
     <span type="submit"  id="in">Вход</span>
     <div id="userMenu" style="display: none">
@@ -20,7 +21,27 @@
   </div>
   </header>
   <main>
-    <img src="../sorces/not_work.png" id="NWimg">
+    <div class="block-column">
+      <div id="ivents-container">
+        <template id="ivents-template">
+          <div class="ivents-block">
+            <img src="" alt="" class="img">
+            <div class="description"></div>
+            <div class="type"></div>
+            <div class="block-row">
+              <div class="startDate"></div>
+              <div class="endDate"></div>
+            </div>
+          </div>
+        </template>
+      </div>
+      <div class="PaginachionContainer" >
+        <div class="block-row" id="Paginachion">
+          <div id="PaginachionContainer"></div>
+          <input type="number" id="iventscount" value="5">
+        </div>
+      </div>
+      </div>  
   </main>
   <footer>
     <div class="foot-text">© 2025 - ATGC</div>

@@ -1,5 +1,5 @@
 body {
-    background-image: url(/sorces/background2.jpg);
+    background-image: url(../sorces/background2.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -89,7 +89,6 @@ main {
 }
 
 footer { 
-    background-color: #1C560A; 
     padding: 10px; 
     text-align: start; 
     font-size: 16px; 

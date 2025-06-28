@@ -1,8 +1,25 @@
+const image = document.getElementById('image');
+const description = document.getElementById('description');
+const type = document.getElementById('type');
+const startDate = document.getElementById('startDate');
+const endDate = document.getElementById('endDate');
+
+
 const loginButton = document.getElementById('in');
 const profileButton = document.getElementById('profileButton');
 const logoutButton = document.getElementById('logoutButton');
 const userMenu = document.getElementById('userMenu');
 let userMenuListenerAttached = false;
+
+/*"id": "string",
+  "type": "PERCENT",
+  "value": 0,
+  "description": "string",
+  "start_date": "2025-06-28T15:10:45.096Z",
+  "end_date": "2025-06-28T15:10:45.096Z",
+  "platformFor": "PC",
+  "imageId": "string"
+*/
 
 function activate(email){
   if (!userMenuListenerAttached) {
@@ -23,7 +40,7 @@ function activate(email){
         headers: {  
           Authorization: `Bearer ${localStorage.getItem('token')}`
         },  
-      })
+      })  
       .catch(error => {  
         console.error('Ошибка выхода из профиля:', error);  
         alert('Ошибка выхода из профиля: ' + error.message);  

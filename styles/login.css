@@ -1,5 +1,4 @@
 .login-form {
-    background-color: #fff;
     padding: 30px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -37,6 +36,6 @@
 }
 
 .login-form button[type="submit"] {
-    background-color: #5f2580;
+    background-color: #1C560A; 
     color: #fff;
 }

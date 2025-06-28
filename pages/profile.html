@@ -21,32 +21,32 @@
             <button id="profileButton">Профиль</button>
             <button id="logoutButton">Выход</button>
         </div>
-    </header> 
- 
+    </header>
     <main> 
         <div class="profile-form">
             <div class="field" >
+                <label for="username">Username</label> 
+                <input type="text" id="username" placeholder="KERRIGAN"> 
+            </div>
+            <div class="field" >
+                <label for="birthdate">Дата рождения</label> 
+                <input type="text" id="birthdate" placeholder="12.07.2017"> 
+            </div>
+            <div class="field" >
                 <label for="email">Email</label> 
-                <input type="email" id="email" placeholder="Nexrpe@kreosoft.ru">
+                <input type="email" id="email" placeholder="Shupep@kreosoft.ru">
             </div> 
             <div class="field" >
-                <label for="fio">ФИО</label> 
-                <input type="text" id="fio" placeholder="Иванов Иван Иванович"> 
+                <label for="firstName">Имя</label> 
+                <input type="text" id="firstName" placeholder="Иван"> 
+            </div>
+            <div class="field" >
+                <label for="lastName">Фамилия</label> 
+                <input type="text" id="lastName" placeholder="Иванов"> 
             </div>
             <div class="field" >
                 <label for="phone">Номер телефона</label> 
                 <input type="tel" id="phone" placeholder="+7 (800) 555-35-35"> 
-            </div>
-            <div class="field" >
-                <label for="gender">Пол</label> 
-                <select id="gender"> 
-                    <option value="male" selected>Мужчина</option> 
-                    <option value="female">Женщина</option> 
-                </select> 
-            </div>
-            <div class="field" >
-                <label for="birthdate">Дата рождения</label> 
-                <input type="text" id="birthdate" placeholder="01.01.2000"> 
             </div>
             <button type="submit" id="save">Сохранить</button> 
         </div> 

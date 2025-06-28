@@ -40,9 +40,11 @@
   margin: 2%;
   background-color: black;
   cursor: pointer;
-  height: 20%;
   border-radius: 15px;
   text-decoration: none;
+  padding: 6px;
+  min-width: 190px;
+  height: 150px;
 }
 
 #info_img{
