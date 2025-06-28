@@ -14,12 +14,12 @@ function activate(email){
     logoutButton.style.display = 'inline-block';
 
     profileButton.addEventListener('click', () => {
-      window.location.href = 'file:///E:/TSU/Front/lab2/rof/profile.html'
+      window.location.href = '../pages/profile.html'
     });
 
     logoutButton.addEventListener('click', () => {
       localStorage.removeItem('token');
-        window.location.href = 'file:///E:/TSU/Front/lab2/log/login.html'
+        window.location.href = '../pages/login.html'  
     });
     userMenuListenerAttached = true;
   }
@@ -28,10 +28,13 @@ function activate(email){
 window.addEventListener('load', () => {
   const authToken = localStorage.getItem('token');
   if (authToken) {
+    console.log('Токен получен из localStorage:', localStorage.getItem('token'));
     email=localStorage.getItem('email')
     document.getElementById('in').textContent=email;
     activate(email);
   } else {
+    console.log('Токен не найден в localStorage.');
+    window.location.href = '../pages/login.html'
   }
 });
 
@@ -45,7 +48,6 @@ $( function() {
 } ); 
 
 $(function() { 
-
   $("#phone").keyup(function() { 
       let phone = $(this).val().replace(/\D/g, "");
       phone = phone.substring(0, 12);
